@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: peoplefinder-pvc
 spec:
-storageClassName: ""
+storageClassName: peoolefinder
   accessModes:
     - ReadWriteMany
   resources:

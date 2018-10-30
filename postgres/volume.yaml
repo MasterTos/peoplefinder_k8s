@@ -11,5 +11,5 @@ spec:
   nfs:
     path: /
     # FIXME: use the right IP or domain
-    server: <IP>
+    server: 10.100.29.191
 
