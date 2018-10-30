@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: peoplefinder-ingress
   namespace: peoplefinder
+  annotations:
+    kubernetes.io/ingress.class: traefik
 spec:
   rules:
   - host: test.service.sci.tu.ac.th
