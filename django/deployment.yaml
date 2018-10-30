@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: peoplefinder
+  labels:
+    app: peoplefinder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: peoplefinder-container
+  template:
+    metadata:
+      labels:
+        app: peoplefinder-container
+    spec:
+      containers:
+        - name: peoplefinder
+          image: <image>:<tag>
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+              name: peoplefinder-credentials
+            - configMapRef:
+              name: peoplefinder-configmap
+          volumeMounts: &mount
+          - name: static
+            mountPath: /static
+        - name: peoplefinder-static
+          image: nginx:alpine
+          resources:
+            requests:
+              cpu: 10m
+              memory: 30Mi
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - name: static
+            mountPath: /usr/share/nginx/html/static
+      initContainers:
+        - name: collectstatic
+          image: <image>:<tag>
+          command: ['python', 'manage.py', 'collectstatic', '--no-input']
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+          envFrom:
+            - secretRef:
+              name: peoplefinder-credentials
+            - configMapRef:
+              name: peoplefinder-configmap
+          volumeMounts: *mount
+      volumes:
+        - name: static
+          emptyDir: {}

@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: peoplefinder-pv
+spec:
+  capacity:
+    storage: 2Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /
+    # FIXME: use the right IP or domain
+    server: <IP>
+

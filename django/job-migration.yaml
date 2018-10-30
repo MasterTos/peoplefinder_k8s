@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: peoplefinder-migrations
+spec:
+  template:
+    spec:
+      containers:
+        - name: peoplefinder
+          image: <image>:<tag>
+          command: ['python', 'manage.py', 'migrate']
+        # command: ['sh', 'run.sh']
+          envFrom:
+            - secretRef:
+              name: peoplefinder-credentials
+            - configMapRef:
+              name: peoplefinder-configmap
+      restartPolicy: Never
+  backoffLimit: 5

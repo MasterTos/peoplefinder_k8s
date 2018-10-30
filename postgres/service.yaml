@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: peoplefinder-db-service
+spec:
+  selector:
+    app: peoplefinder-db-container
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

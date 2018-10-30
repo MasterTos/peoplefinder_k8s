@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: peoplefinder-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: peoplefinder-db-container
+  template:
+    metadata:
+      labels:
+        app: peoplefinder-db-container
+        tier: backend
+    spec:
+      containers:
+        - name: peoplefinder-db-container
+          image: postgres:alpine
+          envFrom:
+            - secretRef:
+              name: peoplefinder-credentials
+
+          ports:
+            - containerPort: 5432
+          volumeMounts:
+            - name: peoplefinder-volume-mount
+              mountPath: /var/lib/postgresql/data
+
+      volumes:
+        - name: peoplefinder-volume-mount
+          persistentVolumeClaim:
+            claimName: peoplefinder-pvc
