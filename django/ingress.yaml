@@ -13,5 +13,6 @@ spec:
           serviceName: peoplefinder-service
           servicePort: django
       - path: /static
+        backend:
           serviceName: peoplefinder-service
           servicePort: nginx
