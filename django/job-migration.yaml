@@ -8,13 +8,13 @@ spec:
     spec:
       containers:
         - name: peoplefinder
-          image: mastertos/peoplefinder:1
+          image: mastertos/peoplefinder:2
           command: ['python', 'manage.py', 'migrate']
         # command: ['sh', 'run.sh']
           envFrom:
             - secretRef:
-              name: peoplefinder-credentials
+                name: peoplefinder-credentials
             - configMapRef:
-              name: peoplefinder-configmap
+                name: peoplefinder-configmap
       restartPolicy: Never
   backoffLimit: 5

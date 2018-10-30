@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: peoplefinder
-          image: mastertos/peoplefinder:1
+          image: mastertos/peoplefinder:2
           command: ['sh', 'runserver.sh']
           ports:
             - containerPort: 8000
@@ -42,7 +42,7 @@ spec:
             mountPath: /usr/share/nginx/html/static
       initContainers:
         - name: collectstatic
-          image: mastertos/peoplefinder:1
+          image: mastertos/peoplefinder:2
           command: ['python', 'manage.py', 'collectstatic', '--no-input']
           resources:
             requests:
