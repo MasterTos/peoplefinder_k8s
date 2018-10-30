@@ -2,6 +2,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: peoplefinder-pv
+  namespace: peoplefinder
 spec:
   capacity:
     storage: 2Gi

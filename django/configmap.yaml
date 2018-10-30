@@ -4,6 +4,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: peoplefinder-configmap
+  namespace: peoplefinder
 data:
   APP_NAME: Mans Not Hot
   APP_ENV: production

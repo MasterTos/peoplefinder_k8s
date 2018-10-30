@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: peoplefinder-service
+  namespace: peoplefinder
 spec:
   selector:
     app: peoplefinder-container
