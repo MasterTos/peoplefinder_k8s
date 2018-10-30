@@ -4,7 +4,7 @@ metadata:
   name: peoplefinder-pvc
   namespace: peoplefinder
 spec:
-storageClassName: peoolefinder
+  storageClassName: peoolefinder
   accessModes:
     - ReadWriteMany
   resources:
