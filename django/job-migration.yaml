@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: peoplefinder
-          image: <image>:<tag>
+          image: mastertos/peoplefinder:1
           command: ['python', 'manage.py', 'migrate']
         # command: ['sh', 'run.sh']
           envFrom:
