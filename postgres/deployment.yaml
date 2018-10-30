@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: peoplefinder-db-container
-          image: postgres:alpine
+          image: postgres:10-alpine
           envFrom:
             - secretRef:
                 name: peoplefinder-credentials
