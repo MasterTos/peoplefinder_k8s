@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: peoplefinder-ingress
+spec:
+  rules:
+  - host: test.service.sci.tu.ac.th
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: peoplefinder-service
+          servicePort: django
+      - path: /static
+          serviceName: peoplefinder-service
+          servicePort: nginx
