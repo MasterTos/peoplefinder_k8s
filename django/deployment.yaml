@@ -23,9 +23,9 @@ spec:
             - containerPort: 8000
           envFrom:
             - secretRef:
-              name: peoplefinder-credentials
+                name: peoplefinder-credentials
             - configMapRef:
-              name: peoplefinder-configmap
+                name: peoplefinder-configmap
           volumeMounts: &mount
           - name: static
             mountPath: /static
@@ -50,9 +50,9 @@ spec:
               memory: 100Mi
           envFrom:
             - secretRef:
-              name: peoplefinder-credentials
+                name: peoplefinder-credentials
             - configMapRef:
-              name: peoplefinder-configmap
+                name: peoplefinder-configmap
           volumeMounts: *mount
       volumes:
         - name: static

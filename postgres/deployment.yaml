@@ -19,7 +19,7 @@ spec:
           image: postgres:alpine
           envFrom:
             - secretRef:
-              name: peoplefinder-credentials
+                name: peoplefinder-credentials
 
           ports:
             - containerPort: 5432
