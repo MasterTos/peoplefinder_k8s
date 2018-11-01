@@ -5,6 +5,7 @@ metadata:
   namespace: peoplefinder
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
 spec:
   rules:
   - host: test.service.sci.tu.ac.th
@@ -13,8 +14,8 @@ spec:
       - path: /
         backend:
           serviceName: peoplefinder-service
-          servicePort: django
+          servicePort: 8000
       - path: /static
         backend:
           serviceName: peoplefinder-service
-          servicePort: nginx
+          servicePort: 80

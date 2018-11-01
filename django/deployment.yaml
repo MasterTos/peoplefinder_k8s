@@ -17,8 +17,8 @@ spec:
     spec:
       containers:
         - name: peoplefinder
-          image: mastertos/peoplefinder:2
-          command: ['sh', 'runserver.sh']
+          image: mastertos/peoplefinder:3
+          command: ['python', 'manage.py', 'runserver', '0.0.0.0:8000']
           ports:
             - containerPort: 8000
           envFrom:
@@ -28,7 +28,7 @@ spec:
                 name: peoplefinder-configmap
           volumeMounts: &mount
           - name: static
-            mountPath: /static
+            mountPath: /code/test
         - name: peoplefinder-static
           image: nginx:alpine
           resources:
@@ -42,7 +42,7 @@ spec:
             mountPath: /usr/share/nginx/html/static
       initContainers:
         - name: collectstatic
-          image: mastertos/peoplefinder:2
+          image: mastertos/peoplefinder:3
           command: ['python', 'manage.py', 'collectstatic', '--no-input']
           resources:
             requests:
